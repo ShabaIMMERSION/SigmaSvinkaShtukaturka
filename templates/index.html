@@ -8,6 +8,17 @@
     <title>Forgotten Times</title>
 </head>
 <body>
-    
+    <header>
+        {% for o in quizzes: %}
+            <h3>{{ o[1] }}</h3>
+            <p>{{ o[2] }}</p>
+        {% endfor %}
+    </header>
+    <main>
+
+    </main>
+    <footer>
+
+    </footer>
 </body>
 </html>

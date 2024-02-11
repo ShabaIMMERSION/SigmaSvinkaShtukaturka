@@ -40,3 +40,32 @@ class SQLManager:
         """, [name, description])
         cursor.close()
         self.db.commit()
+
+    def add_question(self, quiz_id, content):
+        cursor = self.db.cursor()
+        cursor.execute("""
+            INSERT INTO Questions (quiz_id, content) VALUES (?, ?)
+        """, [quiz_id, content])
+        cursor.close()
+        self.db.commit()
+
+    def add_answers(self, question_id, content, is_right):
+        cursor = self.db.cursor()
+        cursor.execute("""
+            INSERT INTO Answers (question_id, content, is_right) VALUES (?, ?, ?)
+        """, [question_id, content, is_right])
+        cursor.close()
+        self.db.commit()
+
+    def select_quizzes(self):
+        cursor = self.db.cursor()
+        cursor.execute("""
+            SELECT * FROM Quizz;
+        """)
+
+        records = cursor.fetchall()
+
+        cursor.close()
+        self.db.commit()
+        return records
+

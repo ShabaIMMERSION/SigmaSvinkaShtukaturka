@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-import sqlite3
+from sqlmanager import SQLManager
 
 
 app = Flask(__name__)
@@ -7,7 +7,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return "Hello, World!"
+    sql = SQLManager("quizz.db")
+    quizzes = sql.select_quizzes()
+    return render_template("index.html", quizzes=quizzes)
 
 
 if __name__ == "__main__":
