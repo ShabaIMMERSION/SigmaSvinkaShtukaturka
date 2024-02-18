@@ -1,0 +1,8 @@
+{% extends "index.html" %}
+{% block title %}Quizzes / Квізи{% endblock %}
+{% block content %}
+{% for o in quizzes: %}
+<h3>{{ o[1] }}</h3>
+<p>{{ o[2] }}</p>
+{% endfor %}
+{% endblock %}
